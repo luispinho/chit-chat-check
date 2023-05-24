@@ -5,7 +5,7 @@ import srtValidator from "srt-validator";
 import { exec } from "child_process";
 
 import util from "node:util";
-import path from 'path';
+import path from "path";
 
 // promisify exec
 const execPromise = util.promisify(exec);
@@ -119,7 +119,7 @@ fs.readdir(dirPath, (err, files) => {
       if (err) throw err;
 
       const validationResult = srtValidator(data);
-      if (validationResult.length !== 0) console.log(`${file} - ${validationResult}`);
+      if (validationResult.length !== 0) console.log(`${file} - ${JSON.stringify(validationResult, null, 2)}`);
 
       if (hasOutOfPlaceCharacters(data)) {
         console.log(`${file} - Out of place uppercase letters, open and check file`);
