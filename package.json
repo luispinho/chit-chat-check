@@ -11,7 +11,12 @@
   "directories": {
     "test": "test"
   },
+  "bin": {  
+    "validate": "./validate-srt.ts"
+  },
   "scripts": {
+    "preinstall": "npm install -g ts-node cspell @cspell/dict-es-es @cspell/dict-fr-fr @cspell/dict-pt-pt",
+    "postinstall": "cspell link add /opt/homebrew/lib/node_modules/@cspell/dict-es-es/cspell-ext.json && cspell link add /opt/homebrew/lib/node_modules/@cspell/dict-fr-fr/cspell-ext.json && cspell link add /opt/homebrew/lib/node_modules/@cspell/dict-pt-pt/cspell-ext.json",
     "validation": "npx ts-node validate-srt.ts",
     "spellcheck": "cd / && cspell --color --no-progress --show-suggestions --locale \"pt-PT, en-US, fr-FR, es-ES\" \"/YOUR/PATH/HERE/*.srt\"",
     "test": "echo \"Error: no test specified\" && exit 1"
